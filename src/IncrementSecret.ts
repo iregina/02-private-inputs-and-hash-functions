@@ -21,11 +21,11 @@ export class IncrementSecret extends SmartContract { // creates a new smart cont
 
 
 // this method updates the state
-    @method incrementSalt(salt: Field, secret: Field) {
+    @method incrementSecret(salt: Field, secret: Field) {
         const x = this.x.get();
         this.x.assertEquals(x);
 
         Poseidon.hash([salt, secret]).assertEquals(x);
-        this.x.set(Poseiden.hash([salt, secret.add(1)]));
+        this.x.set(Poseidon.hash([salt, secret.add(1)]));
     }
 }
